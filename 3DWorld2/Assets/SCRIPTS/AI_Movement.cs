@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class AI_Movement : MonoBehaviour
 {
-
     Animator animator;
 
     public float moveSpeed = 0.2f;
@@ -20,16 +19,14 @@ public class AI_Movement : MonoBehaviour
     int WalkDirection;
 
     public bool isWalking;
+    public bool isDead = false; // ADD THIS
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        //So that all the prefabs don't move/stop at the same time
         walkTime = Random.Range(3, 6);
         waitTime = Random.Range(5, 7);
-
 
         waitCounter = waitTime;
         walkCounter = walkTime;
@@ -37,12 +34,17 @@ public class AI_Movement : MonoBehaviour
         ChooseDirection();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            isWalking = false;
+            animator.SetBool("isRunning", false);
+            return;
+        }
+
         if (isWalking)
         {
-
             animator.SetBool("isRunning", true);
 
             walkCounter -= Time.deltaTime;
@@ -69,18 +71,15 @@ public class AI_Movement : MonoBehaviour
 
             if (walkCounter <= 0)
             {
-                stopPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                stopPosition = transform.position;
                 isWalking = false;
-                //stop movement
                 transform.position = stopPosition;
                 animator.SetBool("isRunning", false);
-                //reset the waitCounter
                 waitCounter = waitTime;
             }
         }
         else
         {
-
             waitCounter -= Time.deltaTime;
 
             if (waitCounter <= 0)
@@ -92,9 +91,18 @@ public class AI_Movement : MonoBehaviour
 
     public void ChooseDirection()
     {
-        WalkDirection = Random.Range(0, 4);
+        if (isDead) return; // ADD THIS
 
+        WalkDirection = Random.Range(0, 4);
         isWalking = true;
         walkCounter = walkTime;
+    }
+
+    // ADD THIS METHOD
+    public void StopForever()
+    {
+        isDead = true;
+        isWalking = false;
+        animator.SetBool("isRunning", false);
     }
 }
