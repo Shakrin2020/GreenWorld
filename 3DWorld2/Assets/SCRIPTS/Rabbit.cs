@@ -5,6 +5,7 @@ public class Rabbit : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody rb;
+    public GameObject bloodEffectPrefab;
 
     private bool isDead = false;
 
@@ -25,6 +26,17 @@ public class Rabbit : MonoBehaviour
 
         Debug.Log("Rabbit killed: " + gameObject.name);
 
+        if (bloodEffectPrefab != null)
+        {
+            GameObject bloodInstance = Instantiate(
+                bloodEffectPrefab,
+                transform.position + Vector3.up * 0.5f,
+                Quaternion.identity
+            );
+
+            Destroy(bloodInstance, 2f);
+        }
+
         AI_Movement movement = GetComponent<AI_Movement>();
         if (movement != null)
         {
@@ -37,6 +49,12 @@ public class Rabbit : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
             animator.SetTrigger("Die");
+        }
+
+        // Spawn blood at hit position
+        if (bloodEffectPrefab != null)
+        {
+            Instantiate(bloodEffectPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
         }
 
         if (rb != null)

@@ -18,6 +18,8 @@ public class AxeHit : MonoBehaviour
                 hitAudio.PlayOneShot(hitAudio.clip);
             }
 
+
+            Vector3 hitPoint = other.ClosestPoint(transform.position);
             rabbit.Die();
         }
     }

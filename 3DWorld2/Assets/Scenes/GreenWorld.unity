@@ -1495,6 +1495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 736491127}
   rb: {fileID: 736491125}
+  bloodEffectPrefab: {fileID: 2059111058085337398, guid: 8cc0a63ee49dc874d86cdc67c5cb6f62, type: 3}
 --- !u!1 &827237210 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2635365240562699898, guid: 30b9318f4bfaa4f40b7296287a015011, type: 3}
@@ -1546,6 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 827237219}
   rb: {fileID: 827237218}
+  bloodEffectPrefab: {fileID: 2059111058085337398, guid: 8cc0a63ee49dc874d86cdc67c5cb6f62, type: 3}
 --- !u!1001 &880491130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2809,6 +2811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1534894864}
   rb: {fileID: 1534894862}
+  bloodEffectPrefab: {fileID: 2059111058085337398, guid: 8cc0a63ee49dc874d86cdc67c5cb6f62, type: 3}
 --- !u!1001 &1551003485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4377,6 +4380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2107053394}
   rb: {fileID: 2107053393}
+  bloodEffectPrefab: {fileID: 2059111058085337398, guid: 8cc0a63ee49dc874d86cdc67c5cb6f62, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
